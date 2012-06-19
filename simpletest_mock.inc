@@ -6,6 +6,11 @@ class DrupalUnitTestCaseWithMock extends DrupalUnitTestCase {
 		
 		$tag = substr( md5( rand() ), 0, 6 );
 		
+		$reflection = new ReflectionClass($className);
+		$methods = $reflection->getMethods( ReflectionMethod::IS_PUBLIC 
+											| ReflectionMethod::IS_PROTECTED 
+											| ReflectionMethod::IS_ABSTRACT );
+		
 		ob_start();
 		include dirname(__FILE__).'/template/mockObject.php';
 		$evalCode = ob_get_clean();
@@ -17,5 +22,11 @@ class DrupalUnitTestCaseWithMock extends DrupalUnitTestCase {
 		return new $classNameForInstance;
 		
 	}
+	
+}
+
+interface MockMethod {
+	
+	function invoke();
 	
 }
