@@ -1,0 +1,7 @@
+name = simpletest_mock
+description = simpletest extension for craeting stub and mock objects.
+package = TEST
+version = 7.x-0.x
+core = 7.x
+files[] = simpletest_mock.test
+files[] = simpletest_mock.inc

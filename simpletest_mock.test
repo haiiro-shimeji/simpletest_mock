@@ -1,0 +1,15 @@
+<?php
+
+require_once dirname(__FILE__).'/simpletest_mock.inc';
+
+class simpletest_mock_test extends DrupalUnitTestCaseWithMock {
+	
+	function getInfo() {
+		return array(
+			'name' => 'simpletest_mock test',
+			'description' => 'simpletest_mock test.',
+			'group' => 'simpletest_mock',
+		);
+	}
+	
+}
