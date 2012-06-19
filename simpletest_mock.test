@@ -12,4 +12,15 @@ class simpletest_mock_test extends DrupalUnitTestCaseWithMock {
 		);
 	}
 	
+	function testCreateMock() {
+		$this->assertTrue( is_subclass_of( $this->getMock('SampleClass_for_simpletest_mock_test'),
+											'SampleClass_for_simpletest_mock_test' ) );
+	}
+	
+}
+
+class SampleClass_for_simpletest_mock_test {
+	function hoge() {}
+	function fuga() {}
+	function piyo() {}
 }
