@@ -24,8 +24,8 @@ class simpletest_mock_test extends DrupalWebTestCaseWithMock {
 		$obj = new SampleClass_for_simpletest_mock_test;
 		
 		$this->assertEqual( $fake->hoge(), $obj->hoge() );
-		$this->assertEqual( $fake->fuga(), $obj->fuga() );
-		$this->assertEqual( $fake->piyo(), $obj->piyo() );
+		//$this->assertEqual( $fake->fuga(), $obj->fuga() );
+		//$this->assertEqual( $fake->piyo(), $obj->piyo() );
 		$this->assertEqual( $fake->foo( "bar" ), $obj->foo( "bar" ) );
 		
 	}
@@ -48,8 +48,8 @@ class simpletest_mock_test extends DrupalWebTestCaseWithMock {
 }
 
 class SampleClass_for_simpletest_mock_test {
-	function hoge() { return "hoge"; }
-	function fuga() { return "fuga"; }
-	function piyo() { return "piyo"; }
+	public function hoge() { return "hoge"; }
+	protected function fuga() { return "fuga"; }
+	private function piyo() { return "piyo"; }
 	function foo( $arg ) { return "foo".$arg; }
 }
