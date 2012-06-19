@@ -2,8 +2,12 @@
 
 require_once dirname(__FILE__).'/simpletest_mock.inc';
 
-class simpletest_mock_test extends DrupalUnitTestCaseWithMock {
+class simpletest_mock_test extends DrupalWebTestCaseWithMock {
 	
+	function setUp() {
+		parent::setUp('simpletest_mock');
+	}
+
 	function getInfo() {
 		return array(
 			'name' => 'simpletest_mock test',

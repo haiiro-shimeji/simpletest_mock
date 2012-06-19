@@ -1,6 +1,6 @@
 <?php
 
-class DrupalUnitTestCaseWithMock extends DrupalUnitTestCase {
+class DrupalWebTestCaseWithMock extends DrupalWebTestCase {
 	
 	protected function getMock( $className ) {
 		
