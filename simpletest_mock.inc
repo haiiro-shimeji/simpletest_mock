@@ -19,14 +19,45 @@ class DrupalWebTestCaseWithMock extends DrupalWebTestCase {
 		
 		$classNameForInstance = 'MockObject_'.$tag;
 		
-		return new $classNameForInstance;
+		$obj = new $classNameForInstance;
+		
+		$obj->methods = array();
+		
+		foreach ( $methods as $m ) {
+			$obj->methods[ $m->name ] = new MockMethod( $m );
+		}
+		
+		return $obj;
 		
 	}
 	
 }
 
-interface MockMethod {
-	
-	function invoke();
-	
+interface MockObject {
+	function method( $methodName );
 }
+
+class MockMethod {
+	
+	private $method;
+	private $return;
+	private $stub;
+	
+	function __construct( $method ) {
+		$this->method = $method;
+	}
+	
+	function expects() {}
+	function willReturn( $return ) {
+		$this->return = $return;
+		$this->stub = true;
+	}
+	function alterBahavior() {}
+	
+	function invoke() {
+		return $this->return;
+	}
+	
+	function isStub() { return $this->stub; }
+	
+}		

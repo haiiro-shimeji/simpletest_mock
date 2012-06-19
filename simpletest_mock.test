@@ -30,20 +30,17 @@ class simpletest_mock_test extends DrupalWebTestCaseWithMock {
 		
 	}
 	
-	/*
 	function testDefineStubFunction() {
 		
 		$stub = $this->getMock('SampleClass_for_simpletest_mock_test');
 		
-		$RETURN = "hoge";
+		$RETURN = "hogehogehoge";
 		
 		$stub->method('hoge')->willReturn( $RETURN );
 		
-		$this->assertEquals( $RETURN, $stub->hoge() );
+		$this->assertEqual( $RETURN, $stub->hoge() );
 		
 	}
-	 * 
-	 */
 	
 }
 
