@@ -36,9 +36,25 @@ class simpletest_mock_test extends DrupalWebTestCaseWithMock {
 		
 		$RETURN = "hogehogehoge";
 		
-		$stub->method('hoge')->willReturn( $RETURN );
+		$stub->method('hoge')->willReturn( array( $RETURN ) );
 		
 		$this->assertEqual( $RETURN, $stub->hoge() );
+		
+	}
+	
+	function testDefineStubFunction_multipleCall() {
+		
+		$stub = $this->getMock('SampleClass_for_simpletest_mock_test');
+		
+		$RETURN1 = "hogehogehoge";
+		$RETURN2 = "fugafugafuga";
+		$RETURN3 = "piyopiyopiyo";
+		
+		$stub->method('hoge')->willReturn( array( $RETURN1, $RETURN2, $RETURN3 ) );
+		
+		$this->assertEqual( $RETURN1, $stub->hoge() );
+		$this->assertEqual( $RETURN2, $stub->hoge() );
+		$this->assertEqual( $RETURN3, $stub->hoge() );
 		
 	}
 	

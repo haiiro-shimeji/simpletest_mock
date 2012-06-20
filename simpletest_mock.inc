@@ -43,6 +43,8 @@ class MockMethod {
 	private $return;
 	private $stub;
 	
+	private $callCount = 0;
+	
 	function __construct( $method ) {
 		$this->method = $method;
 	}
@@ -55,7 +57,7 @@ class MockMethod {
 	function alterBahavior() {}
 	
 	function invoke() {
-		return $this->return;
+		return $this->return[ $this->callCount++ ];
 	}
 	
 	function isStub() { return $this->stub; }
